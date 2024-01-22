@@ -19,3 +19,8 @@ class Snake:
     def draw(self, surface):
         for pos in self.positions:
             pygame.draw.rect(surface, white, (pos[0], pos[1], GRID_SIZE, GRID_SIZE))
+    
+    def collisionCheck(self, fruit):
+        head_pos = self.positions[0]
+        return head_pos[0] == fruit.position[0] and head_pos[1] == fruit.position[1]
+

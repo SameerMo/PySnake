@@ -16,9 +16,8 @@ snake=Snake()
 snake_speed = pygame.time.Clock()
 speed=10
 
-fruit=Fruit()
-
 game_over=False
+fruit=Fruit()
 
 #Main game loop
 while not game_over:
@@ -43,6 +42,9 @@ while not game_over:
     snake.draw(dis)
 
     fruit.draw(dis)
+
+    if snake.collisionCheck(fruit):
+        fruit.position = fruit.positionChanger()
 
     pygame.display.flip()
 

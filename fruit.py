@@ -4,9 +4,12 @@ from settings import *
 
 class Fruit():
     def __init__(self):
-        pass
-    
+        self.position = self.positionChanger()
+
+    def positionChanger(self):
+        x = random.randint(0, (WINDOW_X // GRID_SIZE - 1)) * GRID_SIZE
+        y = random.randint(0, (WINDOW_Y // GRID_SIZE - 1)) * GRID_SIZE
+        return x, y
+
     def draw(self, surface):
-        fruit_x = random.randint(0, WINDOW_X - GRID_SIZE)
-        fruit_y = random.randint(0, WINDOW_Y - GRID_SIZE) 
-        pygame.draw.rect(surface, red, (fruit_x, fruit_y, GRID_SIZE, GRID_SIZE))
+        pygame.draw.rect(surface, red, (self.position[0], self.position[1], GRID_SIZE, GRID_SIZE))
