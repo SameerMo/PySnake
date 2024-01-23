@@ -43,8 +43,12 @@ while not game_over:
 
     fruit.draw(dis)
 
-    if snake.collisionCheck(fruit):
+    if snake.collisionCheck():
+        game_over=True
+
+    if snake.eatCheck(fruit):
         fruit.position = fruit.positionChanger()
+        snake.eat()
 
     pygame.display.flip()
 
@@ -52,4 +56,3 @@ while not game_over:
 
 pygame.quit()
 quit()
-
