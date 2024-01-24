@@ -3,7 +3,7 @@ import time
 import random
 from settings import *
 from snake import Snake
-from fruit import Fruit
+from fruit import Fruit, SuperFruit
 
 #Initialising the window
 pygame.init()
@@ -16,8 +16,13 @@ snake=Snake()
 snake_speed = pygame.time.Clock()
 speed=10
 
+power=3
+powerc=random.randint(3,3)
 game_over=False
-fruit=Fruit()
+if power==powerc:
+    fruit=SuperFruit()
+else:
+    fruit=Fruit()
 
 #Main game loop
 while not game_over:

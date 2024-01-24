@@ -1,5 +1,6 @@
 import pygame
 from settings import *
+from fruit import SuperFruit
 
 class Snake:
     def __init__(self):
@@ -23,6 +24,8 @@ class Snake:
     def eatCheck(self, fruit):
         head_pos = self.positions[0]
         if head_pos[0] == fruit.position[0] and head_pos[1] == fruit.position[1]:
+            if isinstance(fruit, SuperFruit):
+                self.eat()
             return True
         else:
             return False
@@ -39,5 +42,6 @@ class Snake:
         current_head = self.positions[0]
         new_part = ((current_head[0] + self.direction[0] * GRID_SIZE) % WINDOW_X,
                     (current_head[1] + self.direction[1] * GRID_SIZE) % WINDOW_Y)
+        self.length+=1
         self.positions.append(new_part)
 

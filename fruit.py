@@ -13,3 +13,8 @@ class Fruit():
 
     def draw(self, surface):
         pygame.draw.rect(surface, red, (self.position[0], self.position[1], GRID_SIZE, GRID_SIZE))
+
+class SuperFruit(Fruit):
+    def draw(self, surface):
+        pygame.draw.rect(surface, blue, (self.position[0], self.position[1], GRID_SIZE, GRID_SIZE))
+
