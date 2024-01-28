@@ -24,8 +24,6 @@ class Snake:
     def eatCheck(self, fruit):
         head_pos = self.positions[0]
         if head_pos[0] == fruit.position[0] and head_pos[1] == fruit.position[1]:
-            if isinstance(fruit, SuperFruit):
-                self.eat()
             return True
         else:
             return False

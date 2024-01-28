@@ -16,13 +16,13 @@ snake=Snake()
 snake_speed = pygame.time.Clock()
 speed=10
 
-power=3
-powerc=random.randint(3,3)
-game_over=False
+power=random.randint(1,10)
+powerc=random.randint(1,10)
 if power==powerc:
     fruit=SuperFruit()
 else:
     fruit=Fruit()
+game_over=False
 
 #Main game loop
 while not game_over:
@@ -52,6 +52,14 @@ while not game_over:
         game_over=True
 
     if snake.eatCheck(fruit):
+        if isinstance(fruit, SuperFruit):
+            speed += 1
+        power=random.randint(1,10)
+        powerc=random.randint(1,10)
+        if power==powerc:
+            fruit=SuperFruit()
+        else:
+            fruit=Fruit()
         fruit.position = fruit.positionChanger()
         snake.eat()
 
