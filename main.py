@@ -2,7 +2,7 @@ import pygame
 import time
 import random
 from settings import *
-from snake import Snake
+from snake import Snake, CPUPlayer
 from fruit import Fruit, SuperFruit
 
 #Initialising the window
@@ -23,6 +23,8 @@ if power==powerc:
 else:
     fruit=Fruit()
 game_over=False
+
+cpu_player = CPUPlayer(snake, fruit)
 
 #Main game loop
 while not game_over:
@@ -62,6 +64,11 @@ while not game_over:
             fruit=Fruit()
         fruit.position = fruit.positionChanger()
         snake.eat()
+            
+            
+    cpu_move = cpu_player.decide_next_move()
+    snake.direction = cpu_move
+
 
     pygame.display.flip()
 

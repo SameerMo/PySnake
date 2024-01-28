@@ -35,11 +35,29 @@ class Snake:
         else:
             return False
 
-        
     def eat(self):
         current_head = self.positions[0]
         new_part = ((current_head[0] + self.direction[0] * GRID_SIZE) % WINDOW_X,
                     (current_head[1] + self.direction[1] * GRID_SIZE) % WINDOW_Y)
         self.length+=1
         self.positions.append(new_part)
+    
+#Finds first fruit and eats it but bugs out after 
+class CPUPlayer:
+    def __init__(self, snake, fruit):
+        self.snake = snake
+        self.fruit = fruit
 
+    def next_move(self):
+        fruit_x, fruit_y = self.fruit.position
+        head_x, head_y = self.snake.positions[0]
+        if fruit_x > head_x:
+            return pygame.Vector2(1, 0) 
+        elif fruit_x < head_x:
+            return pygame.Vector2(-1, 0)
+        elif fruit_y > head_y:
+            return pygame.Vector2(0, 1)
+        elif fruit_y < head_y:
+            return pygame.Vector2(0, -1) 
+        else:
+            return pygame.Vector2(1, 0)
