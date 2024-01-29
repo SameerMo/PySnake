@@ -24,7 +24,7 @@ else:
     fruit=Fruit()
 game_over=False
 
-cpu_player = CPUPlayer(snake, fruit)
+# cpu_player = CPUPlayer(snake, fruit)
 
 #Main game loop
 while not game_over:
@@ -63,11 +63,13 @@ while not game_over:
         else:
             fruit=Fruit()
         fruit.position = fruit.positionChanger()
+        if fruit.position in snake.positions:
+            fruit.position = fruit.positionChanger()
         snake.eat()
             
             
-    cpu_move = cpu_player.decide_next_move()
-    snake.direction = cpu_move
+    # cpu_move = cpu_player.next_move()
+    # snake.direction = cpu_move
 
 
     pygame.display.flip()
