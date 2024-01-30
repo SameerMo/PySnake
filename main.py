@@ -22,7 +22,17 @@ if power==powerc:
     fruit=SuperFruit()
 else:
     fruit=Fruit()
+
 game_over=False
+score=0
+
+score_font = pygame.font.SysFont("arial", 20)
+ 
+ 
+def update_score(score):
+    value = score_font.render("Your Score: " + str(score), True, white)
+    dis.blit(value, [0, 0])
+
 
 # cpu_player = CPUPlayer(snake, fruit)
 
@@ -54,6 +64,7 @@ while not game_over:
         game_over=True
 
     if snake.eatCheck(fruit):
+        score+=1
         if isinstance(fruit, SuperFruit):
             speed += 1
         power=random.randint(1,10)
@@ -63,14 +74,15 @@ while not game_over:
         else:
             fruit=Fruit()
         fruit.position = fruit.positionChanger()
-        if fruit.position in snake.positions:
+        while fruit.position in snake.positions:
             fruit.position = fruit.positionChanger()
         snake.eat()
             
             
     # cpu_move = cpu_player.next_move()
     # snake.direction = cpu_move
-
+    
+    update_score(score)
 
     pygame.display.flip()
 
